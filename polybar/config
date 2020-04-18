@@ -1,0 +1,210 @@
+[global/wm]
+margin-bottom = 0
+margin-top = 0
+
+[bar/bar1]
+monitor =
+monitor-fallback =
+monitor-strict = false
+override-redirect = false
+bottom = true
+fixed-center = true
+width = 100%
+height = 20 
+offset-x = 0
+offset-y = 0
+background = ${color.grey4}
+foreground = ${color.fg}
+radius-top = 0.0
+radius-bottom = 0.0
+line-size = 2
+line-color = ${color.grey4}
+border-top-size = 0
+border-color = ${color.grey1}
+padding = 0
+module-margin-left = 0
+module-margin-right = 0
+font-0 = "Ubuntu:size=10;2"
+font-1 = "Siji:size=8;2"
+modules-right = date
+modules-center = workspaces
+modules-left = battery network alsa cpu 
+separator =
+spacing = 0
+dim-value = 1.0
+wm-name = 
+locale = 
+tray-position = none
+tray-detached = false
+tray-maxsize = 16
+tray-transparent = false
+tray-background = ${root.background}
+tray-offset-x = 0
+tray-offset-y = 0
+tray-padding = 0
+tray-scale = 1.0
+enable-ipc = true
+click-left = 
+click-middle = 
+click-right =
+scroll-up =
+scroll-down =
+double-click-left =
+double-click-middle =
+double-click-right =
+cursor-click = 
+cursor-scroll = 
+
+[settings]
+throttle-output = 5
+throttle-output-for = 10
+throttle-input-for = 30
+screenchange-reload = false
+compositing-background = source
+compositing-foreground = over
+compositing-overline = over
+compositing-underline = over
+compositing-border = over
+format-foreground = 
+format-background = 
+format-underline =
+format-overline =
+format-spacing =
+format-padding = 2
+format-margin = 0
+format-offset =
+pseudo-transparency = false
+
+[color]
+bg = #141C21
+fg = #D9DBDF
+fg-alt = #141C21
+yellow1 = #FFED75
+yellow2 = #D6C44D
+yellow3 = #8A7C24
+red1 = #FF6F5C
+red2 = #D64A38
+red3 = #8A2416
+grey1 = #7c818c
+grey2 = #4b5162
+grey3 = #404552
+grey4 = #383c4a
+blue1 = #5294e2
+
+[module/alsa]
+type = internal/alsa
+format-volume = <ramp-volume> <label-volume>
+format-volume-background = ${color.grey3}
+format-volume-foreground = ${color.fg}
+format-volume-padding = 2
+label-volume = %percentage%%
+format-muted-prefix = " "
+format-muted-background = ${color.yellow1}
+format-muted-foreground = ${color.fg-alt}
+format-muted-padding = 2
+label-muted = "Muted"
+ramp-volume-0 = 
+ramp-volume-1 = 
+ramp-volume-2 = 
+ramp-volume-3 = 
+ramp-volume-4 = 
+
+ramp-headphones-0 = 
+ramp-headphones-1 = 
+
+
+[module/battery]
+type = internal/battery
+battery = BAT0
+adapter = AC0
+full-at = 99
+poll-interval = 5
+label-charging = %percentage%%
+format-charging = <label-charging>
+format-charging-background = ${color.grey3}
+format-charging-foreground = ${color.fg}
+label-full = %percentage%%
+format-full = <label-full>
+format-full-background = ${color.grey3}
+label-discharging = %time%
+format-discharging = <label-discharging>
+format-discharging-background = ${color.red1}
+format-discharging-foreground = ${color.fg-alt}
+
+[module/cpu]
+type = internal/cpu
+interval = 1
+format = <label>
+format-prefix = 
+format-background = ${color.grey2}
+format-foreground = ${color.fg}
+format-padding = 2
+label = " %percentage%%"
+
+[module/date]
+type = internal/date
+interval = 1.0
+time = %A  %B %d, %Y  %I:%M %p
+time-alt =  %Y-%m-%d%
+format = <label>
+format-background = ${color.grey4}
+format-foreground = ${color.fg}
+format-padding = 2
+label = %time%
+
+[module/memory]
+type = internal/memory
+interval = 3
+format = <label>
+format-prefix = 
+format-background = ${color.grey2}
+format-foreground = ${color.fg}
+format-padding = 2
+label = " %mb_used%"
+
+[module/network]
+type = internal/network
+interface = wlp3s0
+interval = 1.0
+accumulate-stats = true
+unknown-as-up = true
+format-connected = <ramp-signal> <label-connected>
+format-connected-background = ${color.grey2}
+format-connected-foreground = ${color.fg}
+format-connected-padding = 2
+format-disconnected = <label-disconnected>
+format-disconnected-background = ${color.red2}
+format-disconnected-foreground = ${color.fg}
+format-disconnected-padding = 2
+label-connected = %essid%
+label-disconnected = Disconnected
+ramp-signal-0 = 
+ramp-signal-1 = 
+ramp-signal-2 = 
+ramp-signal-3 = 
+ramp-signal-4 = 
+
+[module/workspaces]
+type = internal/xworkspaces
+pin-workspaces = true
+enable-click = true
+enable-scroll = true
+format = <label-state>
+format-padding = 0
+label-monitor = %name%
+label-active = %name%
+label-active-background = ${color.blue1}
+label-active-foreground = ${color.fg-alt}
+label-occupied = %icon%
+label-occupied-underline = ${color.fg}
+label-urgent = %icon%
+label-urgent-background = ${color.yellow1}
+label-urgent-foreground = ${color.fg-alt}
+label-empty = %name%
+label-empty-background = ${color.grey4}
+label-empty-foreground = ${color.fg}
+label-active-padding = 2
+label-urgent-padding = 2
+label-occupied-padding = 2
+label-empty-padding = 2
+
