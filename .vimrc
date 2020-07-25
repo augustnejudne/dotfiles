@@ -61,11 +61,14 @@ Plug 'MaxMEllon/vim-jsx-pretty'
 "" Monokai Colorscheme
 Plug 'phanviet/vim-monokai-pro'
 
+"" Gruvbox Colorscheme
+Plug 'morhetz/gruvbox'
+
 "" Emmet
 Plug 'mattn/emmet-vim'
 
-"" Prettier
-Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
+"" Ripgrep
+Plug 'jremmen/vim-ripgrep'
 
 "" Fuzzyfind
 if isdirectory('/usr/local/opt/fzf')
@@ -75,6 +78,9 @@ else
   Plug 'junegunn/fzf.vim'
 endif
 
+"" Conquer of Completion
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
 "" Utilities
 Plug 'Raimondi/delimitMate'
 Plug 'Yggdroot/indentLine' 
@@ -82,11 +88,12 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'SirVer/ultisnips'
-Plug 'dense-analysis/ale'
+Plug 'w0rp/ale'
 Plug 'vim-scripts/restore_view.vim'
 Plug 'qpkorr/vim-bufkill'
-" Plug 'ervandew/supertab'
+Plug 'ervandew/supertab'
 Plug 'chrisbra/unicode.vim'
+Plug 'junegunn/goyo.vim'
 
 "" Hardtime
 Plug 'takac/vim-hardtime'
@@ -107,8 +114,8 @@ filetype plugin indent on
 "" Autocomplete
 set omnifunc=syntaxcomplete#Complete
 
-"" Disable auto comment on new line
-set formatoptions -=cro
+"" Disable commenting on new line
+set formatoptions-=cro<cr>
 
 "" Hide unsaved buffers
 set hidden
@@ -119,12 +126,13 @@ set clipboard=unnamed
 "" Visual
 syntax on
 set termguicolors
-colorscheme onedark
+" colorscheme onedark
+colorscheme gruvbox
+set bg=dark
 set cursorline
 set number
 set relativenumber
 set ruler
-set t_Co=0
 
 "" Visual options for gvim
 set guioptions-=m
@@ -132,7 +140,7 @@ set guioptions-=T
 set guioptions-=r
 set guioptions-=L
 set guifont=Ubuntu\ Mono\ Regular\ 14
-set linespace=10
+" set linespace=10
 
 "" Tabs
 set autoindent
@@ -147,11 +155,22 @@ set ignorecase
 set incsearch
 set smartcase
 
+"" GitGutter always show the sign column
+set signcolumn=yes
+
 "" Folds
 set foldmethod=manual
 
+"" Wraps
+set nowrap
+set formatoptions-=t
+
+"" No swap files
+set noswapfile
+
 "" Airline
-let g:airline_theme = 'onedark'
+" let g:airline_theme = 'onedark'
+let g:airline_theme = 'gruvbox'
 let g:airline#extensions#branch#enabled = 1
 let g:airline#extensions#ale#enabled = 1
 let g:airline#extensions#tabline#enabled = 1
@@ -176,6 +195,10 @@ let g:user_emmet_settings = {
 "" Ale
 let g:ale_fixers = {'javascript': ['eslint']}
 let g:ale_linters = {'javascript': ['eslint']}
+" let g:ale_fixers = {'javascript': ['standard']}
+" let g:ale_linters = {'javascript': ['standard']}
+let g:ale_lint_on_save = 1
+let g:ale_fix_on_save = 1
 
 "" IndentLine
 let g:indentLine_enabled = 1
@@ -192,6 +215,7 @@ let g:hardtime_maxcount = 2
 let g:hardtime_timeout = 2000
 
 
+
 "" ===========================================
 "" Mappings
 "" ===========================================
@@ -199,6 +223,7 @@ let mapleader=','
 
 "" SuperTab for omnifunc
 " let g:SuperTabDefaultCompletionType = 'context'
+let g:SuperTabDefaultCompletionType = "<c-n>"
 
 nnoremap <leader><space> :nohl<cr>
 
@@ -237,8 +262,8 @@ nnoremap <leader>w :bn<cr>
 nnoremap <leader>c :bp<cr>:bd #<cr>
 " nnoremap <leader>c :bd<cr>
 
-"" Prettier
-nnoremap <leader>pp :Prettier<cr>
+"" ALEFix
+nnoremap <leader>pp :ALEFix<cr>
 
 "" FZF
 nnoremap <silent><c-p> :FZF<cr>
@@ -273,8 +298,12 @@ vnoremap <leader>ff zf
 vnoremap <leader>rf zd
 nnoremap <space> za
 
-:autocmd InsertEnter * let save_cwd = getcwd() | set autochdir
-:autocmd InsertLeave * set noautochdir | execute 'cd' fnameescape(save_cwd)
+" :autocmd InsertEnter * let save_cwd = getcwd() | set autochdir
+" :autocmd InsertLeave * set noautochdir | execute 'cd' fnameescape(save_cwd)
+
+
+"" turn off the highlighting of color words like white, black, red
+nnoremap <leader>t :set t_Co=0<cr>
 
 
 "" ===========================================
@@ -357,4 +386,3 @@ else
   let g:airline_symbols.readonly = ''
   let g:airline_symbols.linenr = ''
 endif
-

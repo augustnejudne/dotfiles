@@ -1,5 +1,5 @@
 # color variables
-set $bg-color     #5294e2
+set $bg-color     #f0544c
 set $inactive-bg-color    #383c4a
 set $text-color     #141C21
 set $inactive-text-color  #dcdcdc
@@ -40,13 +40,15 @@ floating_modifier $mod
 # start a terminal
 bindsym $mod+Return exec i3-sensible-terminal
 # bindsym $mod+Return exec alacritty
+# bindsym $mod+Return exec gnome-terminal
 
 # kill focused window
 bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec dmenu_run -i -l 100 -fn "Roboto" -nb "$inactive-bg-color" -sb "$bg-color" -p "run:"
-#bindsym $mod+d exec dmenu_run -i -l 100 -fn "Roboto" -p "run:"
+bindsym $mod+d exec dmenu_run -i -l 100 -fn "Ubuntu" -nb "$inactive-bg-color" -sb "$bg-color" -p "run:"
+# bindsym $mod+d exec dmenu_run -i -l 100 -fn "Roboto" -p "run:"
+# bindsym $mod+d exec dmenu_run -i -l 100 -fn "Ubuntu" -p "run:"
 
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
@@ -78,10 +80,10 @@ bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
 # split in horizontal orientation
-bindsym $mod+n split h
+bindsym $mod+v split h
 
 # split in vertical orientation
-bindsym $mod+v split v
+bindsym $mod+n split v
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
@@ -92,7 +94,7 @@ bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
-bindsym $mod+Ctrl+space floating toggle
+bindsym $mod+Shift+space floating toggle
 
 # change focus between tiling / floating windows
 bindsym $mod+space focus mode_toggle
@@ -104,6 +106,7 @@ bindsym $mod+space focus mode_toggle
 #bindsym $mod+d focus child
 
 # switch to workspace
+bindsym $mod+t workspace notes
 bindsym $mod+1 workspace 1
 bindsym $mod+2 workspace 2
 bindsym $mod+3 workspace 3
@@ -116,6 +119,7 @@ bindsym $mod+9 workspace 9
 bindsym $mod+0 workspace 10
 
 # move focused container to workspace
+bindsym $mod+Shift+t move container to workspace notes
 bindsym $mod+Shift+1 move container to workspace 1
 bindsym $mod+Shift+2 move container to workspace 2
 bindsym $mod+Shift+3 move container to workspace 3
@@ -165,53 +169,54 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
+
 # window colors
 #			border			background		text			indicator
-client.focused		$bg-color		$bg-color		$text-color		#00ff00
-client.unfocused	$inactive-bg-color	$inactive-bg-color	$inactive-text-color 	#00ff00
-client.focused_inactive	$inactive-bg-color	$inactive-bg-color	$inactive-text-color 	#00ff00
-client.urgent 		$urgent-bg-color 	$urgent-bg-color 	$text-color 		#00ff00
+client.focused		$bg-color		$bg-color		$text-color		$bg-color
+client.unfocused	$inactive-bg-color	$inactive-bg-color	$inactive-text-color
+client.focused_inactive	$inactive-bg-color	$inactive-bg-color	$inactive-text-color
+client.urgent 		$urgent-bg-color 	$urgent-bg-color 	$text-color 		$bg-color
 
 # full screen windows will not have borders
 hide_edge_borders smart
 
-# non full screen windows will have borders
-for_window [class=.*] border pixel 1
+for_window [class="^.*"] border pixel 3
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
-# bar {
-#   status_command i3status
-#   tray_output primary
-#   separator_symbol "---"
-# 	colors {
-#       background $inactive-bg-color
-#       separator #4f4f4f
-# 		#                  border             background         text
-# 		focused_workspace  $bg-color          $bg-color          $text-color
-# 		inactive_workspace $inactive-bg-color $inactive-bg-color $inactive-text-color
-# 		urgent_workspace   $urgent-bg-color   $urgent-bg-color   $text-color
-# 	}
-# }
+bar {
+  status_command i3status
+  tray_output primary
+  separator_symbol "---"
+	colors {
+      background $inactive-bg-color
+      separator #4f4f4f
+		#                  border             background         text
+		focused_workspace  $bg-color          $bg-color          $text-color
+		inactive_workspace $inactive-bg-color $inactive-bg-color $inactive-text-color
+		urgent_workspace   $urgent-bg-color   $urgent-bg-color   $text-color
+	}
+}
 
 
 #############################
 # MY CUSTOM COMMANDS 
 #############################
 # run redshift
-exec redshift
+# exec redshift
 
 # run nitrogen wallpaper
-exec --no-startup-id nitrogen --restore
+# exec --no-startup-id nitrogen --restore
 
 # startup applications
 # exec nautilus
 # exec google-chrome-stable
 # exec slack
-exec firefox
-exec thunderbird
-exec alacritty
-exec zenkit
+# exec firefox
+# exec thunderbird
+# exec alacritty
+# exec zenkit
+# exec xpad
 
 # key binds
 bindsym $mod+m exec nautilus
@@ -237,5 +242,10 @@ bindsym Print exec gnome-screenshot
 exec --no-startup-id /usr/bin/gnome-keyring-daemon --start --components=secrets
 
 # exec polybar
-exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+# exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+
+# alternating thing
+exec --no-startup-id /home/august/.config/i3/alternating_layouts.py
+
+# exec --no-startup-id compton
 

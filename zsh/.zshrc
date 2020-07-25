@@ -11,8 +11,8 @@ export ZSH="/home/august/.oh-my-zsh"
 ZSH_THEME="typewritten"
 TYPEWRITTEN_CURSOR="block"
 
-# TYPEWRITTEN_PROMPT_LAYOUT="custom1"
-TYPEWRITTEN_PROMPT_LAYOUT="singleline"
+TYPEWRITTEN_PROMPT_LAYOUT="custom1"
+# TYPEWRITTEN_PROMPT_LAYOUT="singleline"
 # TYPEWRITTEN_PROMPT_LAYOUT="multiline"
 # TYPEWRITTEN_PROMPT_LAYOUT="singleline_verbose"
 
@@ -164,8 +164,14 @@ alias projects='cd /home/august/Documents/code/portfolio-projects; clear;'
 alias smart='+639392609622'
 alias jjpin='523366'
 alias sally-next='cd /home/august/Documents/code/sally/sally-fe-next-js; clear;'
-alias sd='sudo docker'
 alias portfolio='cd /home/august/Documents/code/portfolio-projects/portfolio-2020/portfolio; clear;'
+alias quiz-maker='cd /home/august/Documents/code/portfolio-projects/quiz-maker; clear;'
+alias alayon-fe='cd /home/august/Documents/code/alayon/alayon-fe; clear;'
+alias compton-conf="vim /home/august/Documents/code/dotfiles/compton.conf"
+alias reviewlyft='cd /home/august/Documents/code/reviewlyft; clear;'
+alias lyft-fe='cd /home/august/Documents/code/reviewlyft/reviewlyft-v2-frontend; clear;'
+alias dc='docker-compose'
+alias timecamp='/usr/share/timecamp/timecamp'
 
 # This shows up every time I open up the terminal
 # if command -v fortune &> /dev/null && command -v lolcat &> /dev/null && command -v cowsay &> /dev/null
@@ -173,7 +179,30 @@ alias portfolio='cd /home/august/Documents/code/portfolio-projects/portfolio-202
 #   fortune | cowsay -f tux | lolcat
 # fi
 
-# screenfetch | lolcat
-figlet -f slant AugustNejudne | lolcat
-fortune softwareengineering | cowsay -f tux | lolcat
-alias quiz-maker='cd /home/august/Documents/code/portfolio-projects/quiz-maker; clear;'
+figlet -f 3d.flf "August Nejudne" | lolcat
+# fortune softwareengineering | lolcat
+
+# ======================================
+# REVIEW LYFT RELATED
+# ======================================
+AWS_ACCESS_KEY_ID="AKIAXUDO76LAV5P5B3VD"
+AWS_SECRET_ACCESS_KEY="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"
+CLOUDFRONT_DISTRIBUTION="EGRQJOCIW3WIY"
+
+# ======================================
+# asdf
+# ======================================
+. $HOME/.asdf/asdf.sh
+
+alias may='cd /home/august/Documents/personal/journal/2020/05-May; clear;'
+
+
+
+alias lyft-api='cd /home/august/Documents/code/reviewlyft/reviewlyft-v2-api; clear;'
+alias june='cd /home/august/Documents/personal/journal/2020/01-Jun; clear;'
+alias july='cd /home/august/Documents/personal/journal/2020/july; clear;'
+
+
+
+## for reviewlift
+export GATSBY_DEPLOYMENT_ENV='local'
