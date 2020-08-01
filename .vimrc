@@ -81,6 +81,9 @@ endif
 "" Conquer of Completion
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
+"" Todo list
+Plug 'vuciv/vim-bujo'
+
 "" Utilities
 Plug 'Raimondi/delimitMate'
 Plug 'Yggdroot/indentLine' 
@@ -94,6 +97,7 @@ Plug 'qpkorr/vim-bufkill'
 Plug 'ervandew/supertab'
 Plug 'chrisbra/unicode.vim'
 Plug 'junegunn/goyo.vim'
+Plug 'machakann/vim-highlightedyank'
 
 "" Hardtime
 Plug 'takac/vim-hardtime'
@@ -108,6 +112,10 @@ set viewoptions=cursor,folds,slash,unix
 "" ===========================================
 "" Basic Setup
 "" ===========================================
+" set updatetime=50
+
+let g:highlightedyank_highlight_duration = 200
+
 set nocompatible
 filetype plugin indent on
 
@@ -115,7 +123,10 @@ filetype plugin indent on
 set omnifunc=syntaxcomplete#Complete
 
 "" Disable commenting on new line
-set formatoptions-=cro<cr>
+" autocmd FileType * set formatoptions-=cro
+
+"" turn off the highlighting of color words like white, black, red
+ " autocmd FileType * set t_Co=0
 
 "" Hide unsaved buffers
 set hidden
@@ -249,6 +260,7 @@ nnoremap k gk
 nnoremap - :m .+1<cr>==
 nnoremap _ :m .-2<cr>==
 
+"" Scroll up/down 5 lines
 nnoremap <c-y> 5<c-y>
 nnoremap <c-e> 5<c-e>
 
@@ -300,10 +312,6 @@ nnoremap <space> za
 
 " :autocmd InsertEnter * let save_cwd = getcwd() | set autochdir
 " :autocmd InsertLeave * set noautochdir | execute 'cd' fnameescape(save_cwd)
-
-
-"" turn off the highlighting of color words like white, black, red
-nnoremap <leader>t :set t_Co=0<cr>
 
 
 "" ===========================================

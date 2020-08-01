@@ -1,0 +1,11 @@
+gnome.wallpaper:	/usr/share/backgrounds/warty-final-ubuntu.png
+gnome.gtk.theme:	Numix
+gnome.icon.theme: Numix
+gnome.wm.theme: Numix
+i3-wm.bar.trayoutput:	primary
+i3-wm.window.border.size: 3
+i3-wm.window.border.color: #0000FF
+i3-wm.floatingwindow.border.size: 0
+i3-wm.gaps.inner.size: 10
+i3-wm.gaps.outer.size: 0
+
